@@ -10,6 +10,9 @@ Delivered twice with identical content: once **virtually** and once **in person*
 - Microsoft Foundry and GitHub Copilot are **optional** everywhere, with a no-access
   alternative for every step
 
+> **Independent educational material:** This workshop is not an official, endorsed, or
+> sponsored workshop of Microsoft or GitHub.
+
 ## Purpose
 
 By the end of the workshop, participants can:
@@ -27,9 +30,9 @@ By the end of the workshop, participants can:
 
 ## Audience
 
-Microsoft employees who write prompts or build agent-assisted workflows: engineers, PMs,
-support and operations leads, content and program managers. No AI background assumed. No
-coding required on the core path.
+Professionals who write prompts or build agent-assisted workflows: engineers, PMs, support
+and operations leads, content and program managers. No AI background assumed. No coding
+required on the core path.
 
 ## Prerequisites and access matrix
 
