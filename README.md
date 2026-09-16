@@ -207,5 +207,4 @@ Adapt this content for your own team: replace the placeholder owner teams, swap 
 scenario for one of your own that contains no confidential data, and rehearse with
 [train-the-trainer.md](train-the-trainer.md).
 
-No LICENSE file is included, because licensing depends on where you publish this and who owns
-it. Add the license your organization requires before distributing the repository externally.
+This repository is licensed under the [MIT License](LICENSE).
