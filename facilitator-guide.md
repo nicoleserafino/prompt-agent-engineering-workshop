@@ -626,9 +626,9 @@ Slide 35.
 
 Full detail: [contingency-plan.md](contingency-plan.md).
 
-## Tomorrow-ready prep checklist
+## Pre-delivery prep checklist
 
-Do these the evening before. Total time: about 45 minutes.
+Complete these before each delivery. Total time: about 45 minutes.
 
 **Content (20 minutes)**
 - [ ] Read this guide end to end once, out loud, watching the clock.

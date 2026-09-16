@@ -1,19 +1,19 @@
 # Participant preflight
 
-Email-ready pre-work. Send 24-48 hours before each delivery. Both versions cover the same
+Email-ready pre-work. Send before each delivery. Both versions cover the same
 180-minute agenda; only the logistics paragraph differs.
 
 ---
 
 ## Version A — virtual delivery
 
-**Subject:** Before tomorrow's Prompt & Agent Engineering Workshop (10 minutes of prep)
+**Subject:** Prompt & Agent Engineering Workshop pre-work (10 minutes)
 
 Hello,
 
-Tomorrow we spend three hours building prompts, designing an agent workflow, evaluating it, and
-running a change through a review process. It is hands-on: about half the time is you working,
-not me talking.
+In this three-hour workshop, we build prompts, design an agent workflow, evaluate it, and run a
+change through a review process. It is hands-on: about half the time is you working, not me
+talking.
 
 **Please do these four things before we start (about 10 minutes).**
 
@@ -38,19 +38,19 @@ confidential material into any chat window during the session.
 **If something is blocked.** Reply to this email and I will pair you with someone. You can
 complete every activity in a pair.
 
-See you tomorrow,
+See you at the workshop,
 [Facilitator name]
 
 ---
 
 ## Version B — in-person delivery
 
-**Subject:** Before tomorrow's Prompt & Agent Engineering Workshop (10 minutes of prep)
+**Subject:** Prompt & Agent Engineering Workshop pre-work (10 minutes)
 
 Hello,
 
-Tomorrow we spend three hours building prompts, designing an agent workflow, evaluating it, and
-running a change through a review process. It is hands-on, so please **bring a laptop**.
+In this three-hour workshop, we build prompts, design an agent workflow, evaluate it, and run a
+change through a review process. It is hands-on, so please **bring a laptop**.
 
 **Please do these four things before you arrive (about 10 minutes).**
 
@@ -73,7 +73,7 @@ confidential material into any chat window during the session.
 **If something is blocked.** Come find me in the first five minutes. You can complete every
 activity in a pair.
 
-See you tomorrow,
+See you at the workshop,
 [Facilitator name]
 
 ---

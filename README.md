@@ -92,7 +92,7 @@ The 15 minutes outside the two sessions and the break are deliberate: 7 for welc
 
 | I am... | Start here |
 | --- | --- |
-| Facilitating tomorrow | [facilitator-guide.md](facilitator-guide.md), then [facilitator-materials.md](facilitator-materials.md) |
+| Facilitating a session | [facilitator-guide.md](facilitator-guide.md), then [facilitator-materials.md](facilitator-materials.md) |
 | A participant | [participant-workbook.md](participant-workbook.md) |
 | Presenting | [slides/slide-outline.md](slides/slide-outline.md) |
 | Doing the exercises | [exercises/README.md](exercises/README.md) |
