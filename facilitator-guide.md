@@ -39,8 +39,10 @@ activity time. Every teaching segment below has an explicit "cut this first" lin
 
 Slides 1-4.
 
-**Do (before minute 0).** Room or meeting open 10 minutes early. Repository link and the
-workbook link visible on screen and posted in chat. Timer running.
+**Do (before minute 0).** Room or meeting open 10 minutes early. Publish or identify the
+actual GitHub source repository and put its URL plus the workbook link on screen and in chat.
+A local checkout or placeholder repository cannot be forked until it is published. Timer
+running.
 
 **Say (2 minutes).**
 > "In three hours you will write a prompt you would actually trust, turn it into an agent
@@ -54,12 +56,15 @@ workbook link visible on screen and posted in chat. Timer running.
 > If you have Microsoft Foundry or GitHub Copilot, there are optional extensions. If you do
 > not, you will not miss a single learning objective. Those paths are clearly marked."
 
-**Do (3 minutes) — setup check.** Ask everyone to confirm in chat or by show of hands:
-1. Repository open.
-2. Microsoft Copilot chat open in another tab.
-3. Signed in to GitHub in a browser.
-
-Anyone missing item 3 pairs up now. Note the pairs; you will need them in Session 2.
+**Do (3 minutes) — setup check and fork demonstration.**
+1. In 60-90 seconds, demonstrate: open the published source URL, select **Fork** near the
+   upper-right, choose **Create a new fork**, select your own account as owner, keep the
+   suggested name, create it, and verify `<your-user>/<repo-name>` plus the "forked from"
+   indicator. Say that labels may vary slightly. Do not add screenshots to the repository.
+2. Ask for three confirmations: repository open, Microsoft Copilot chat open, and signed in
+   to GitHub. Participants who did not fork in preflight can follow now or use the break; the
+   fork must be ready by minute 115.
+3. Pair anyone who cannot fork or sign in. Record how each pair will share a PR URL.
 
 **Say (1 minute) — ground rules.** Cameras optional. Questions in chat any time. Two-minute
 warnings before every activity ends. Parking lot for off-scope questions — name it and show
@@ -415,9 +420,12 @@ Slides 26-27. **Cut this first if behind:** the branch naming table.
    signal that two people are editing the same rule and need to talk.
 5. Protect the default branch; require review. The rule is cheap and prevents the worst day.
 
-**Do — demo (2 minutes).** In the GitHub web UI: open the prompt file, click the pencil, show
-the "create a new branch" option on the commit form, and show the pull request template
-appearing in the PR body. Narrate that no local tooling was used.
+**Do — demo (2 minutes).** In your own fork, open the prompt file, select the pencil, show the
+new-branch option in the commit dialog, and open the PR compare page. Point at **base
+repository** and **base branch**: the target must be your own fork's `main`, never the
+facilitator/source repository. Show the recognizable relationship
+`<your-user>/<repo>:main <- <your-user>/<repo>:prompt/...`, then show where the PR URL is
+copied. Narrate that no local tooling was used and labels can vary slightly.
 
 **Ask.** "Who has ever lost a prompt improvement because someone overwrote it?" *Expected:*
 several. That is the problem branches solve.
@@ -432,9 +440,10 @@ Slide 28. Workbook step 5. Exercise
 **Objective.** Each participant lands a small, reviewable prompt change as a pull request in
 their own fork, with different partners making different changes at the same time.
 
-**Brief (3 minutes).** Assign roles A, B, C, D within each pair or table so changes differ. Show
-the branch naming convention on screen. Remind them to fill the PR template properly — the
-body is the artifact being reviewed.
+**Brief (3 minutes).** Confirm everyone is already on their own fork and assign roles A, B, C,
+D within each pair or table so changes differ. Show the branch naming convention and the
+fork-local base check on screen. Remind them to fill the PR template and send the browser PR
+URL to their partner. Do not spend activity time creating everyone's fork.
 
 **Success criteria.** A focused diff; a PR body with intent, evidence, and rollback; a branch
 name that says what changed; no direct edit of the default branch.
@@ -485,9 +494,10 @@ Slide 30. Workbook step 6. Exercise
 **Objective.** Review a partner's pull request against
 [governance/pr-checklist.md](governance/pr-checklist.md) and reach an explicit decision.
 
-**Brief (2 minutes).** "Swap PRs. Leave at least three comments: one blocking, one question,
-one suggestion. Name the approver role who would have to sign this off for real. Then respond
-to the review you received."
+**Brief (2 minutes).** "Open your partner's PR URL, then Files changed. Hover a changed line,
+select +, and start a review. Leave at least three comments: one blocking, one question, one
+suggestion. Use Review changes to choose a decision and Submit review. GitHub will not let you
+approve your own PR; partner review is the point."
 
 **Success criteria.** Every checklist item satisfied or explicitly waived with a reason; at
 least one comment citing evidence rather than taste; the required approver named.
@@ -639,9 +649,12 @@ Complete these before each delivery. Total time: about 45 minutes.
 - [ ] Decide your Foundry demo choice: live project, or the no-access walkthrough.
 
 **Logistics (15 minutes)**
-- [ ] Fork the repository yourself and confirm the web-UI branch-and-PR flow works end to end.
-- [ ] Confirm the repository link you will share is reachable from a browser without special
-      access.
+- [ ] Publish the source repository, record its actual URL, then fork it yourself and confirm
+      the web-UI branch-and-PR flow works end to end.
+- [ ] With a non-owner/test account if possible, confirm expected participants can see the
+      source, create a fork, open the sample PR, and leave a review comment.
+- [ ] Confirm the Issues path works in the test fork, or prepare the workbook fallback.
+- [ ] Rehearse the 60-90 second fork demonstration and the fork-local PR base check.
 - [ ] Prepare the chat messages you will paste: repository link, workbook link, activity briefs,
       return-from-break clock time.
 - [ ] Set up the timer you will actually use.

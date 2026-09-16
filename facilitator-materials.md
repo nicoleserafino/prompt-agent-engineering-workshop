@@ -15,9 +15,15 @@ What to have ready for each of the two deliveries. Pair with
 - [ ] [contingency-plan.md](contingency-plan.md) open
 
 **Pre-staged assets**
+- [ ] Workshop repository published to GitHub; record the actual source URL. A local or
+      placeholder repository cannot be forked.
+- [ ] Source visibility, fork permission, sample PR visibility, and partner review-comment
+      access tested with a non-owner/test account if possible
 - [ ] Screenshot of the weak starter prompt output from your rehearsal
 - [ ] Your own fork of the repository with one example pull request already open
 - [ ] Issues enabled in your fork, or a pre-opened issue editor; new forks may have Issues off
+- [ ] A 60-90 second live fork demonstration rehearsed; use the prepared fork/PR fallback if
+      the live path fails rather than adding maintenance-heavy screenshots
 - [ ] A copied set of chat messages: repository link, workbook link, four activity briefs, the
       break return time, the knowledge-check questions
 - [ ] A visible timer

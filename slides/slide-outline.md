@@ -296,7 +296,7 @@ Labels: CORE, OPTIONAL — MICROSOFT FOUNDRY, OPTIONAL — GITHUB COPILOT, FALLB
   - PR carries intent, evidence, rollback
   - Protect the default branch, require review
   - Conflicts mean two people edit one rule
-- Speaker notes: Demo the web-UI flow: pencil, commit to a new branch, PR template appears. Narrate that no local tooling is used and that local git is optional.
+- Speaker notes: Demo in your fork: pencil, commit to a new branch, then inspect the PR compare controls. Base repository must be your fork and base branch main; never target the source. Show where to copy the PR URL. Labels may vary slightly.
 - Activity cue: Web UI demo, 2 minutes
 
 ## Slide 28 — Activity B1: make a change, open a PR
@@ -305,8 +305,9 @@ Labels: CORE, OPTIONAL — MICROSOFT FOUNDRY, OPTIONAL — GITHUB COPILOT, FALLB
 - On-slide:
   - Pick role A, B, C, or D — pick different ones
   - Edit in your fork, commit to a new branch
+  - Check: your fork `main` ← your fork `prompt/...`
   - Fill the PR template honestly
-- Speaker notes: Longest activity; protect the time. Assign roles so partners change different things. FALLBACK if forking is blocked: hand-written diff and PR body in the workbook.
+- Speaker notes: Forks must already be ready. Assign different roles, require the fork-local base check, and have authors send the browser PR URL to partners. FALLBACK: hand-written diff and PR body.
 - Activity cue: CORE activity, 15 minutes, exercise 07 section B1
 
 ## Slide 29 — Governance that fits on one page
@@ -325,10 +326,11 @@ Labels: CORE, OPTIONAL — MICROSOFT FOUNDRY, OPTIONAL — GITHUB COPILOT, FALLB
 - Timing: minutes 137-149
 - On-slide:
   - Swap PRs with your partner
+  - Files changed → line `+` → Start a review
   - Work the checklist top to bottom
   - Three comments: blocking, question, suggestion
   - Name the approver role
-- Speaker notes: Push people toward evidence-based comments rather than taste. Debrief on which checklist item caught the most problems, and on what to automate versus keep human.
+- Speaker notes: End with Review changes → decision → Submit review. GitHub may prevent self-approval; partner review is expected. Push comments toward evidence rather than taste.
 - Activity cue: CORE activity, 12 minutes, exercise 07 section B2
 
 ## Slide 31 — Quality and operations

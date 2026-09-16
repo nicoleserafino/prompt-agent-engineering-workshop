@@ -21,11 +21,44 @@ Everything uses the fictional **Contoso Trail Gear** scenario and synthetic mess
 - [ ] [exercises/README.md](exercises/README.md) open in another tab.
 - [ ] Microsoft Copilot chat open.
 - [ ] Signed in to GitHub in a browser.
-- [ ] Optional but useful: fork this repository now so Session 2 is ready.
+- [ ] Recommended: complete the GitHub fork setup below before the session; otherwise do it
+      during minutes 0-7 or the break. Your fork must be ready by minute 115.
 
 Your name / table / breakout room: `______________________`
 
 Partner(s): `______________________`
+
+## GitHub web setup: create your own fork
+
+Prefer to complete this during preflight. Otherwise use the welcome/setup window at minutes
+0-7 or the break at minutes 87-102. **Do not wait until Activity B1 at minute 115.** GitHub
+labels and button positions may vary slightly as the web interface changes.
+
+1. Open the **workshop repository URL supplied by the facilitator**. A local folder or
+   unpublished placeholder cannot be forked.
+2. Find **Fork** near the upper-right of the repository page. Select it, then select
+   **Create a new fork** if GitHub shows an intermediate page or menu.
+3. For **Owner**, choose your own GitHub account. Do not choose the facilitator's account or
+   an organization unless the organization has explicitly allowed workshop forks.
+4. Keep the suggested repository name.
+5. Select **Create fork**. Wait for GitHub to finish and navigate to the new repository.
+6. Verify the repository header or breadcrumb starts with
+   `<your-user>/<repo-name>`, not the facilitator/source owner. Near the title, GitHub should
+   indicate that the repository was forked from the source.
+7. In your fork, navigate through **library → prompts → triage-intake.prompt.md** to confirm
+   you can see the file used in Activity B1.
+8. Agree how you will share work with your partner: paste the PR URL in meeting chat, send it
+   directly, or show/hand over the browser in person.
+
+**You are ready when:**
+
+- [ ] Your browser is on `<your-user>/<repo-name>`, your own fork.
+- [ ] You can see `library/prompts/triage-intake.prompt.md`.
+- [ ] You and your partner know how you will share the PR URL.
+
+If **Fork** is missing or policy blocks it, pair with someone whose fork works or use the
+workbook draft path. Forking is recommended preparation, not a strict access prerequisite.
+See the [Exercise 7 troubleshooting table](exercises/07-lifecycle-change-exercise.md#troubleshooting-github-web-tasks).
 
 ---
 
@@ -384,11 +417,11 @@ Return on time. If GitHub access is a problem for you, sort it out now or pair w
 
 # Session 2 — Multi-Author PromptOps & Governance
 
-Setup for Session 2: fork this repository in the GitHub web UI so you have write access to your
-own copy. If your fork has no **Issues** tab and you control its settings, enable Issues under
-**Settings → General → Features**. Otherwise use the documented draft-mode fallback for B3.
-Full steps in
-[exercises/07-lifecycle-change-exercise.md](exercises/07-lifecycle-change-exercise.md).
+Setup for Session 2: complete
+[GitHub web setup: create your own fork](#github-web-setup-create-your-own-fork) no later than
+the break. At minute 115, your browser should already be on your own fork with the prompt file
+visible. Full reference steps are in
+[Exercise 7](exercises/07-lifecycle-change-exercise.md).
 
 ## Step 5 — Parallel authoring via branch and pull request (Activity B1, minutes 115-130)
 
@@ -410,11 +443,38 @@ Mine: `______`
 
 ### 5.2 Steps
 
-1. In your fork, open `library/prompts/triage-intake.prompt.md`.
-2. Pencil icon, edit inside the fenced prompt block, keep the section headings.
-3. Commit with **Create a new branch for this commit and start a pull request**.
-4. Branch name: `prompt/triage-intake-______________________`
-5. Fill in the pull request template: what changed, why, evidence, rollback.
+GitHub labels may vary slightly. Before editing, re-check that the header begins with
+`<your-user>/`.
+
+1. From your fork's main page, select **library**, then **prompts**, then
+   **triage-intake.prompt.md**.
+2. Select the pencil icon or **Edit this file**. If the action is inside an overflow menu,
+   choose the option whose tooltip or label says edit.
+3. Make your assigned change inside the fenced prompt block and keep the existing section
+   headings.
+4. Select **Commit changes...** or the equivalent commit button.
+5. In the commit dialog, enter a short intent-based message. GitHub may offer
+   **Commit directly to `main`** and **Create a new branch for this commit and start a pull
+   request**. Choose the **new branch** option; do not commit directly to `main`.
+6. Name the branch `prompt/triage-intake-______________________`, then continue with
+   **Propose changes**, **Commit changes**, or the equivalent button.
+7. If GitHub shows **Compare & pull request**, select it. If not, open your fork's
+   **Pull requests** tab and choose **New pull request**.
+8. On the compare page, inspect the repository and branch controls before writing the PR:
+   - **Base repository:** `<your-user>/<repo-name>` — your fork, not the facilitator/source.
+   - **Base branch:** `main`.
+   - **Head/compare repository:** `<your-user>/<repo-name>`.
+   - **Compare branch:** your `prompt/...` branch.
+9. The visible relationship should be equivalent to:
+   `<your-user>/<repo>:main <- <your-user>/<repo>:prompt/...`.
+   **Do not submit a PR against the facilitator/source repository.**
+10. If GitHub defaulted or redirected to an upstream comparison, change **base repository** to
+    your fork. If that control is hard to find, return to your fork's **Pull requests** tab,
+    choose **New pull request**, and set the four controls there.
+11. Select **Create pull request**. Fill in what changed, why, evidence, and rollback, then
+    submit the PR.
+12. Copy the URL from the browser address bar and send it to your partner using the sharing
+    method you agreed during setup.
 
 ### 5.3 Expected result
 
@@ -455,7 +515,20 @@ CORE. Checklist: [governance/pr-checklist.md](governance/pr-checklist.md). Roles
 **Objective.** Review a partner's change like an owner: against the checklist, not against
 taste.
 
-### 6.1 Leave three comments
+### 6.1 Open and review your partner's PR
+
+1. Open the PR URL your partner shared. Confirm the page shows their fork and their
+   `prompt/...` branch targeting `main` in that same fork.
+2. Open **Files changed**.
+3. Hover beside a changed line until a **+** appears, select it, write a line-specific
+   comment, and choose **Start a review** or **Add single comment**. Repeat until you have one
+   blocking comment, one question, and one suggestion.
+4. Select **Review changes** near the upper-right of the files view. Add a summary, choose
+   **Approve**, **Request changes**, or **Comment**, then select **Submit review**.
+5. GitHub may prevent authors from approving their own PR. That is expected: your partner
+   reviews yours, and you review theirs.
+
+### 6.2 Record three comments
 
 | Type | My comment | Line or file |
 | --- | --- | --- |
@@ -463,7 +536,7 @@ taste.
 | Question | | |
 | Suggestion | | |
 
-### 6.2 Checklist findings
+### 6.3 Checklist findings
 
 | Checklist section | Satisfied? | Gap found |
 | --- | --- | --- |
@@ -521,7 +594,11 @@ The number that matters most and why: `_______________________`
 
 ### 7.2 Write the issue
 
-In your fork: **Issues → New issue**. Use this structure.
+In your fork, find **Issues** in the repository navigation near **Code** and **Pull requests**
+(it may be inside an overflow menu on a narrow window), then select **New issue**. If the tab
+is missing and you own the fork, open **Settings → General → Features** and enable
+**Issues** if that option is available. If you cannot enable it, write the issue below in the
+workbook and review it with your partner.
 
 ```text
 Title: Triage misclassifies load-bearing failures as hardware_defect

@@ -15,13 +15,18 @@ In this three-hour workshop, we build prompts, design an agent workflow, evaluat
 change through a review process. It is hands-on: about half the time is you working, not me
 talking.
 
-**Please do these four things before we start (about 10 minutes).**
+**Please do these five things before we start (about 10 minutes).**
 
-1. Open the workshop repository and bookmark it. Skim `README.md`.
+1. Open the published workshop repository URL supplied by the facilitator and bookmark it.
+   Skim `README.md`.
 2. Confirm you can sign in to GitHub in a browser. That is all you need — no local tools, no
    command line.
 3. Confirm you can open Microsoft Copilot chat in a browser tab.
 4. Open `participant-workbook.md`. You will work top to bottom from it.
+5. Recommended: create your own fork using
+   [GitHub web setup: create your own fork](participant-workbook.md#github-web-setup-create-your-own-fork).
+   The facilitator will supply the published repository URL. If forking is blocked, tell the
+   facilitator so you can be paired; forking is not a strict prerequisite.
 
 **Optional, only if you already have access.** Microsoft Foundry (formerly Azure AI Foundry) or
 GitHub Copilot enable two optional extensions. If you have neither, you will not miss a single
@@ -52,12 +57,17 @@ Hello,
 In this three-hour workshop, we build prompts, design an agent workflow, evaluate it, and run a
 change through a review process. It is hands-on, so please **bring a laptop**.
 
-**Please do these four things before you arrive (about 10 minutes).**
+**Please do these five things before you arrive (about 10 minutes).**
 
-1. Open the workshop repository and bookmark it. Skim `README.md`.
+1. Open the published workshop repository URL supplied by the facilitator and bookmark it.
+   Skim `README.md`.
 2. Confirm you can sign in to GitHub in a browser on the laptop you are bringing.
 3. Confirm you can open Microsoft Copilot chat in a browser tab.
 4. Open `participant-workbook.md`. You will work top to bottom from it.
+5. Recommended: create your own fork using
+   [GitHub web setup: create your own fork](participant-workbook.md#github-web-setup-create-your-own-fork).
+   The facilitator will supply the published repository URL. If forking is blocked, tell the
+   facilitator so you can be paired; forking is not a strict prerequisite.
 
 **Optional, only if you already have access.** Microsoft Foundry (formerly Azure AI Foundry) or
 GitHub Copilot enable two optional extensions. Without them you still meet every objective.
@@ -84,6 +94,8 @@ See you at the workshop,
 - [ ] Microsoft Copilot chat open in a tab
 - [ ] Workshop repository bookmarked, `README.md` skimmed
 - [ ] `participant-workbook.md` open
+- [ ] Recommended: own fork created from the facilitator's published repository; pairing
+      arranged if blocked
 - [ ] Laptop and charger (in-person delivery)
 - [ ] Optional: Microsoft Foundry project, GitHub Copilot — neither is required
 - [ ] Understood: synthetic data only, never real customer or confidential content
@@ -93,6 +105,8 @@ See you at the workshop,
 - Keep it to ten minutes of prep. Longer pre-work gets ignored and creates a two-speed room.
 - Do not ask anyone to provision cloud resources beforehand. It fails, it costs money, and it
   is not needed.
+- Replace relative file links with links to the published repository before copying this text
+  into email.
 - Track replies about blocked access and pre-assign pairs before you start.
 - Related: [facilitator-materials.md](facilitator-materials.md),
   [contingency-plan.md](contingency-plan.md), [facilitator-guide.md](facilitator-guide.md).

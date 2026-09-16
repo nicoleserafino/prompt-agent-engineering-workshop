@@ -9,15 +9,38 @@ signal into a tracked, human-approved improvement.
 CORE — GitHub web UI in a browser plus Microsoft Copilot chat. No local `git` required, no
 GitHub Copilot license required, no Microsoft Foundry access required.
 
-## Setup (do this once, during welcome or the break)
+## GitHub web setup: create your own fork
+
+Prefer to complete this during participant preflight. Otherwise use minutes 0-7 or the break
+at minutes 87-102. **Your fork must be ready by minute 115; do not start this setup for the
+first time during B1.** GitHub labels and positions can vary slightly.
 
 1. Sign in to GitHub in a browser.
-2. Open the workshop repository and choose **Fork** to create your own copy. You have full
-   write access to your fork, so every step below works without any organization permission.
-3. Check whether the fork has an **Issues** tab. If not, and you control the fork, open
-   **Settings → General → Features** and enable Issues. If settings are unavailable, plan to
-   draft the B3 issue in the workbook instead.
-4. If you cannot fork, see the FALLBACK section at the end. You lose nothing pedagogically.
+2. Open the **workshop repository URL supplied by the facilitator**. The published GitHub
+   repository is required; a local folder or unpublished placeholder cannot be forked.
+3. Find **Fork** near the upper-right of the repository page. Select it, then select
+   **Create a new fork** if GitHub shows that choice.
+4. In **Owner**, choose your own GitHub account. Do not choose the source owner.
+5. Keep GitHub's suggested repository name.
+6. Select **Create fork** and wait for GitHub to navigate to the created repository.
+7. Verify the header or breadcrumb shows `<your-user>/<repo-name>`. GitHub should also show
+   wording near the title indicating it was forked from the facilitator/source repository.
+8. Open **library**, then **prompts**, then **triage-intake.prompt.md**.
+9. Agree how you will send a PR URL to your partner: meeting chat, direct message, or an
+   in-person browser handoff.
+10. Look for **Issues** in your fork's repository navigation, near **Code** and
+    **Pull requests** or in an overflow menu. If it is absent and you own the fork, open
+    **Settings → General → Features** and enable Issues if the option is available. If it is
+    unavailable, plan to draft B3 in the workbook.
+
+### You are ready when...
+
+- [ ] The browser is on `<your-user>/<repo-name>`, not the source repository.
+- [ ] `library/prompts/triage-intake.prompt.md` is visible.
+- [ ] You know how you will share your PR URL with your partner.
+
+Forking is recommended, not a strict prerequisite. If it is blocked, pair with a participant
+whose fork works or use the draft fallback below.
 
 ---
 
@@ -26,7 +49,8 @@ GitHub Copilot license required, no Microsoft Foundry access required.
 **Objective.** Two or more authors change the same prompt library at the same time without
 overwriting each other, and the change arrives as a reviewable proposal.
 
-**Timebox.** 15 minutes: 3 setup, 8 edit and open PR, 4 compare across authors.
+**Timebox.** 15 minutes: 3 brief and role assignment, 8 edit and open PR, 4 share and compare.
+Fork setup must already be complete.
 
 ### Your change assignment
 
@@ -41,17 +65,38 @@ Pick one. In a pair or table, pick **different** ones so you can see parallel au
 
 ### Steps (GitHub web UI)
 
-1. In your fork, open `library/prompts/triage-intake.prompt.md`.
-2. Choose the pencil (**Edit this file**).
+Labels can vary slightly. Stop before submitting if the repository owner shown at the top is
+not your GitHub user.
+
+1. From your fork's main page, select **library → prompts → triage-intake.prompt.md**.
+2. Choose the pencil icon or **Edit this file**. On a narrow window, it may be in an overflow
+   menu; use the option whose label or tooltip says edit.
 3. Make your assigned edit inside the fenced prompt block. Keep the section headings.
-4. Scroll down, choose **Create a new branch for this commit and start a pull request**.
-5. Name the branch using the convention: `prompt/triage-intake-<short-change>` (for example
-   `prompt/triage-intake-safety-boundary`).
-6. Commit with a message that states the intent, for example
+4. Select **Commit changes...** or the equivalent commit button.
+5. Enter an intent-based commit message, for example
    `Clarify safety_concern boundary for load-bearing failures`.
-7. On the pull request form, use the repository pull request template. Fill in: what changed,
-   why, which test cases were run, the evaluation evidence, and the rollback plan.
-8. Open the PR against the default branch **of your fork**.
+6. In the commit dialog, choose **Create a new branch for this commit and start a pull
+   request**, not **Commit directly to `main`**. GitHub may phrase these options slightly
+   differently; choose the option that creates a branch.
+7. Name the branch `prompt/triage-intake-<short-change>`, for example
+   `prompt/triage-intake-safety-boundary`, then select **Propose changes**,
+   **Commit changes**, or the equivalent.
+8. If GitHub displays **Compare & pull request**, select it. Otherwise open the
+   **Pull requests** tab in your fork and choose **New pull request**.
+9. Inspect the compare/base controls:
+   - **Base repository:** `<your-user>/<repo-name>` — your fork.
+   - **Base branch:** `main`.
+   - **Head/compare repository:** `<your-user>/<repo-name>`.
+   - **Compare branch:** your new `prompt/...` branch.
+10. Confirm the relationship is equivalent to
+    `<your-user>/<repo>:main <- <your-user>/<repo>:prompt/...`.
+    **Do not submit against the facilitator/source repository.**
+11. If GitHub redirected to an upstream comparison, change **base repository** to your own
+    fork. If necessary, return to your fork's **Pull requests → New pull request** and set the
+    four controls there.
+12. Select **Create pull request**. Complete the template: what changed, why, test cases,
+    evaluation evidence, and rollback. Select **Create pull request** again to submit.
+13. Copy the PR URL from the browser address bar and share it with your partner.
 
 ### Expected output
 
@@ -94,15 +139,22 @@ checklist, not against taste.
 
 ### Steps
 
-1. Swap PRs with your partner (post the link in chat, or swap laptops in the room).
-2. Open [../governance/pr-checklist.md](../governance/pr-checklist.md) and work top to bottom.
-3. Leave at least three review comments on specific lines:
+1. Open the PR URL your partner shared in chat/direct message, or use their browser in person.
+2. Confirm their PR targets `main` in **their own fork**, not the source repository.
+3. Open [../governance/pr-checklist.md](../governance/pr-checklist.md) and work top to bottom.
+4. Open **Files changed**. Hover next to a changed line until a **+** appears, select it, enter
+   a line comment, and choose **Start a review** or **Add single comment**.
+5. Leave at least three line comments:
    - one that blocks (a governance or safety gap),
    - one that asks a question,
    - one that is a concrete suggestion.
-4. Check [../governance/ownership-raci.md](../governance/ownership-raci.md) and state who
+6. Select **Review changes** near the upper-right, add a summary, select **Approve**,
+   **Request changes**, or **Comment**, and then select **Submit review**.
+7. GitHub may prevent authors from approving their own PR. Partner review is expected: you
+   review your partner's PR and they review yours.
+8. Check [../governance/ownership-raci.md](../governance/ownership-raci.md) and state who
    would have to approve this change for real, and why.
-5. Respond to the review you received. Accept, push back with a reason, or defer with an issue.
+9. Respond to the review you received. Accept, push back with a reason, or defer with an issue.
 
 ### Expected output
 
@@ -160,8 +212,11 @@ Rollback events: 0
 ### Steps
 
 1. Read the digest and name the single most important signal. (Hint: it is not the 18 percent.)
-2. In your fork, open **Issues** and create an issue using this structure. If Issues is not
-   available, draft the same issue in your workbook and review it with a partner.
+2. In your fork, find **Issues** in the repository navigation near **Code** and
+   **Pull requests** (or in an overflow menu), then select **New issue**. If the tab is missing
+   and you own the fork, open **Settings → General → Features** and enable Issues if that
+   option is available. If you cannot enable it, draft the same issue in your workbook and
+   review it with a partner.
 
 ```text
 Title: Triage misclassifies load-bearing failures as hardware_defect
@@ -230,6 +285,17 @@ Post: `issue created | evidence required | approver`.
 
 FALLBACK — If issue creation is blocked, write the issue body in your workbook and read it
 aloud during the debrief. The artifact matters more than the tool.
+
+## Troubleshooting GitHub web tasks
+
+| Problem | What to do |
+| --- | --- |
+| **Fork button is missing** | Confirm you are signed in and the URL is the facilitator's published GitHub repository, not a local path. Labels may vary or the action may be in an overflow menu. If it remains unavailable, pair or use the workbook draft. |
+| **Organization policy blocks the fork** | Do not work around policy. Pair with someone whose fork is allowed, or draft the diff and PR body in the workbook. |
+| **You started editing the source repository** | Do not commit. Cancel the editor and return to `<your-user>/<repo-name>`. If you already created a source branch or PR, stop, tell the facilitator, close the PR without merging, and repeat in your fork. |
+| **The PR targets the upstream/source repository** | Do not submit it. Set **base repository** to your fork and **base branch** to `main`. If already submitted, close it without merging and open a new PR from your fork's **Pull requests → New pull request**. |
+| **Issues tab is missing** | In your own fork, try **Settings → General → Features → Issues** if available. Otherwise write the issue in the workbook and partner-review it. |
+| **You cannot approve your own PR** | This is expected. Copy the PR URL to your partner; they submit the review. If partner access fails, use a line-by-line verbal or workbook review and record the decision without pretending it was a GitHub approval. |
 
 ## Reference
 
