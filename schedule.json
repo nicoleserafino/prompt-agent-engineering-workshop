@@ -1,0 +1,228 @@
+{
+  "workshop": "Prompt & Agent Engineering Workshop",
+  "scenario": "Contoso Trail Gear (fictional) public product-support intake and triage",
+  "version": "1.0.0",
+  "total_minutes": 180,
+  "timing_note": "Canonical timing source. All Markdown artifacts must agree with the 'range' values below. Times are minutes elapsed from session start (minute 0).",
+  "deliveries": [
+    "Virtual (Microsoft Teams or equivalent)",
+    "In person (single room, tables of 4-6)"
+  ],
+  "blocks": [
+    {
+      "id": "welcome",
+      "label": "Welcome, objectives, setup check",
+      "start": 0,
+      "end": 7,
+      "duration": 7,
+      "range": "0-7",
+      "segments": []
+    },
+    {
+      "id": "session-1",
+      "label": "Session 1: Prompt & Agent Engineering Foundations",
+      "start": 7,
+      "end": 82,
+      "duration": 75,
+      "range": "7-82",
+      "segments": [
+        {
+          "id": "s1-1",
+          "label": "Prompt fundamentals: instructions, context, grounding",
+          "kind": "teach",
+          "start": 7,
+          "end": 14,
+          "duration": 7,
+          "range": "7-14"
+        },
+        {
+          "id": "a1",
+          "label": "Activity A1: Improve the starter triage prompt",
+          "kind": "activity",
+          "start": 14,
+          "end": 26,
+          "duration": 12,
+          "range": "14-26"
+        },
+        {
+          "id": "s1-2",
+          "label": "Structured outputs and common failure modes",
+          "kind": "teach",
+          "start": 26,
+          "end": 33,
+          "duration": 7,
+          "range": "26-33"
+        },
+        {
+          "id": "a2",
+          "label": "Activity A2: Add a structured output contract",
+          "kind": "activity",
+          "start": 33,
+          "end": 43,
+          "duration": 10,
+          "range": "33-43"
+        },
+        {
+          "id": "s1-3",
+          "label": "From prompts to agents: tools, function calling, orchestration, subagents",
+          "kind": "teach",
+          "start": 43,
+          "end": 50,
+          "duration": 7,
+          "range": "43-50"
+        },
+        {
+          "id": "a3",
+          "label": "Activity A3: Simulated tool contract and subagent decomposition",
+          "kind": "activity",
+          "start": 50,
+          "end": 60,
+          "duration": 10,
+          "range": "50-60"
+        },
+        {
+          "id": "s1-4",
+          "label": "Building agents in Microsoft Foundry: author, test, evaluate",
+          "kind": "teach",
+          "start": 60,
+          "end": 66,
+          "duration": 6,
+          "range": "60-66"
+        },
+        {
+          "id": "a4",
+          "label": "Activity A4: Evaluate against synthetic test cases",
+          "kind": "activity",
+          "start": 66,
+          "end": 76,
+          "duration": 10,
+          "range": "66-76"
+        },
+        {
+          "id": "s1-5",
+          "label": "Reusable templates and train-the-trainer handoff",
+          "kind": "teach",
+          "start": 76,
+          "end": 82,
+          "duration": 6,
+          "range": "76-82"
+        }
+      ]
+    },
+    {
+      "id": "knowledge-check",
+      "label": "Transition and knowledge check",
+      "start": 82,
+      "end": 87,
+      "duration": 5,
+      "range": "82-87",
+      "segments": []
+    },
+    {
+      "id": "break",
+      "label": "Break",
+      "start": 87,
+      "end": 102,
+      "duration": 15,
+      "range": "87-102",
+      "segments": []
+    },
+    {
+      "id": "session-2",
+      "label": "Session 2: Multi-Author PromptOps & Governance",
+      "start": 102,
+      "end": 177,
+      "duration": 75,
+      "range": "102-177",
+      "segments": [
+        {
+          "id": "s2-1",
+          "label": "PromptOps lifecycle and the shared library",
+          "kind": "teach",
+          "start": 102,
+          "end": 108,
+          "duration": 6,
+          "range": "102-108"
+        },
+        {
+          "id": "s2-2",
+          "label": "GitHub as source of truth: structure, branches, PRs, parallel authoring",
+          "kind": "teach",
+          "start": 108,
+          "end": 115,
+          "duration": 7,
+          "range": "108-115"
+        },
+        {
+          "id": "b1",
+          "label": "Activity B1: Parallel authoring change via branch and pull request",
+          "kind": "activity",
+          "start": 115,
+          "end": 130,
+          "duration": 15,
+          "range": "115-130"
+        },
+        {
+          "id": "s2-3",
+          "label": "Governance and ownership: CODEOWNERS, model choice, subagent contracts",
+          "kind": "teach",
+          "start": 130,
+          "end": 137,
+          "duration": 7,
+          "range": "130-137"
+        },
+        {
+          "id": "b2",
+          "label": "Activity B2: Review a PromptOps pull request against the governance checklist",
+          "kind": "activity",
+          "start": 137,
+          "end": 149,
+          "duration": 12,
+          "range": "137-149"
+        },
+        {
+          "id": "s2-4",
+          "label": "Quality and operations: evaluations, regression, releases, monitoring, rollback",
+          "kind": "teach",
+          "start": 149,
+          "end": 156,
+          "duration": 7,
+          "range": "149-156"
+        },
+        {
+          "id": "b3",
+          "label": "Activity B3: Monitoring signal to issue to proposed change",
+          "kind": "activity",
+          "start": 156,
+          "end": 168,
+          "duration": 12,
+          "range": "156-168"
+        },
+        {
+          "id": "s2-5",
+          "label": "Discussion, recommendations, next steps",
+          "kind": "teach",
+          "start": 168,
+          "end": 177,
+          "duration": 9,
+          "range": "168-177"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "label": "Close and handoff",
+      "start": 177,
+      "end": 180,
+      "duration": 3,
+      "range": "177-180",
+      "segments": []
+    }
+  ],
+  "callout_labels": [
+    "CORE",
+    "OPTIONAL — MICROSOFT FOUNDRY",
+    "OPTIONAL — GITHUB COPILOT",
+    "FALLBACK"
+  ]
+}

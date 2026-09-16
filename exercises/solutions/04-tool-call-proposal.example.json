@@ -1,0 +1,77 @@
+{
+  "note": "Reference output for Exercise 4. This is a PROPOSAL emitted by a model. Nothing executed. An application still decides whether to run it.",
+  "turn_1_proposal": {
+    "tool_call_proposal": {
+      "name": "lookup_order",
+      "arguments": {
+        "order_number": "CTG-ORD-884120"
+      },
+      "why": "The customer supplied an order number and the shipping status determines the next action.",
+      "requires_human_approval": false
+    }
+  },
+  "turn_2_simulated_tool_result": {
+    "order_number": "CTG-ORD-884120",
+    "purchase_date": "2026-05-02",
+    "items": [
+      {
+        "sku": "TNT-SUMMIT2",
+        "name": "Summit 2 Tent",
+        "product_line": "tents"
+      }
+    ],
+    "warranty_window_days_remaining": 682
+  },
+  "turn_3_final_triage": {
+    "ticket_id": "CTG-10423",
+    "category": "order_and_shipping",
+    "product_line": "tents",
+    "severity": "s3_normal",
+    "safety_flag": false,
+    "recommended_next_action": "route_to_order_support",
+    "missing_information": [],
+    "confidence": 0.86,
+    "needs_human_review": false,
+    "rationale": "Order CTG-ORD-884120 shows a Summit 2 Tent purchased 2026-05-02; the customer reports tracking stalled for six days, which is a shipping issue rather than a product defect."
+  },
+  "failure_path_example": {
+    "simulated_tool_result": {
+      "error": "order_not_found",
+      "message": "No matching order in the synthetic workshop dataset."
+    },
+    "expected_model_behaviour": {
+      "ticket_id": "CTG-10423",
+      "category": "order_and_shipping",
+      "product_line": "unknown",
+      "severity": "s3_normal",
+      "safety_flag": false,
+      "recommended_next_action": "request_more_info",
+      "missing_information": [
+        "A valid synthetic order number"
+      ],
+      "confidence": 0.41,
+      "needs_human_review": true,
+      "rationale": "The order lookup returned order_not_found, so no purchase details are confirmed. Ask the customer to confirm the order number rather than assuming a record exists."
+    },
+    "anti_patterns_to_call_out": [
+      "Inventing an order record after a failed lookup",
+      "Silently retrying a write action",
+      "Claiming the ticket was created when only a proposal was emitted"
+    ]
+  },
+  "write_action_proposal_example": {
+    "tool_call_proposal": {
+      "name": "create_support_ticket",
+      "arguments": {
+        "ticket_id": "CTG-10426",
+        "category": "warranty_claim",
+        "severity": "s3_normal",
+        "summary": "Customer reports a sleeping bag zipper that separates nightly on a bag purchased about two years ago; warranty eligibility not confirmed.",
+        "assign_to_queue": "warranty"
+      },
+      "why": "A human warranty reviewer must decide eligibility; the ticket routes the case to them.",
+      "requires_human_approval": true
+    },
+    "reminder": "Approval is enforced by the application, not by the wording of the prompt."
+  }
+}

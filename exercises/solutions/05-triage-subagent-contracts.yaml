@@ -1,0 +1,121 @@
+# Subagent contracts for the Contoso Trail Gear triage workflow (reference solution).
+# Fictional scenario, synthetic data only. Tools referenced here are simulated in
+# exercises/04-tool-contract.json and execute nothing real.
+
+contract_version: 1.0.0
+workflow: contoso-trail-gear-support-triage
+owner_team: "@your-org/prompt-owners"   # replace with a real team before reuse
+human_review: required for any s1_safety result and any write action
+
+orchestrator:
+  id: triage-orchestrator
+  responsibility: >
+    Receive one synthetic intake message, run the subagents in order, skip the general
+    classifier when the safety checker emits its complete safety override, and assemble a
+    single triage result that conforms to
+    exercises/03-structured-output.schema.json.
+  routing_rules:
+    - if: "safety_escalation_checker.safety_flag == true"
+      then: "skip triage_classifier; map category_override, severity_override, confidence_override, and rationale_override to the final fields; force recommended_next_action to route_to_safety_review"
+    - if: "triage_classifier.confidence < 0.6"
+      then: "set needs_human_review to true"
+    - if: "intake_normalizer.missing_information is not empty"
+      then: "prefer recommended_next_action request_more_info unless safety_flag is true"
+    - if: "safety_flag is true or confidence is below 0.6 or missing_information is not empty"
+      then: "set final needs_human_review to true"
+    - if: "none of the human-review conditions are true"
+      then: "set final needs_human_review to false"
+  final_field_sources:
+    ticket_id: "orchestrator input"
+    category: "safety category_override, otherwise triage_classifier"
+    product_line: "intake_normalizer"
+    severity: "safety severity_override, otherwise triage_classifier"
+    safety_flag: "safety_escalation_checker"
+    recommended_next_action: "forced safety route, otherwise action_recommender"
+    missing_information: "intake_normalizer"
+    confidence: "safety confidence_override, otherwise triage_classifier"
+    needs_human_review: "orchestrator routing rules"
+    rationale: "safety rationale_override, otherwise triage_classifier"
+  stop_conditions:
+    - "A subagent returns output that does not match its contract twice in a row."
+    - "Any tool reports a failure mode; report the failure instead of retrying a write."
+    - "More than 6 total subagent turns."
+
+subagents:
+  - id: intake-normalizer
+    responsibility: "Extract only facts present in the message; list what is missing."
+    inputs:
+      ticket_id: string
+      intake_message: string
+    outputs:
+      product_line: enum [tents, sleeping_bags, backpacks, camp_stoves, apparel, accessories, unknown]
+      stated_facts: array of short strings
+      missing_information: array of short strings
+      available_identifiers: "object containing only identifiers explicitly present in the message"
+    tools_allowed: []
+    must_not:
+      - "Infer a product line that the message does not state or clearly imply."
+      - "Ask the customer for personal or payment data."
+    failure_handling: "If the message is empty or unintelligible, return product_line unknown and a single missing_information entry."
+
+  - id: safety-escalation-checker
+    responsibility: "Decide only whether the message describes risk to a person."
+    inputs:
+      intake_message: string
+    outputs:
+      safety_flag: boolean
+      safety_evidence: string
+      category_override: "safety_concern when safety_flag is true; otherwise null"
+      severity_override: "s1_safety when safety_flag is true; otherwise null"
+      confidence_override: "number when safety_flag is true; otherwise null"
+      rationale_override: "grounded string when safety_flag is true; otherwise null"
+    tools_allowed: []
+    must_not:
+      - "Downgrade a risk because the customer says nothing has happened yet."
+      - "Give medical advice."
+    failure_handling: "When uncertain, set safety_flag true and return all four safety override fields so the orchestrator can still assemble a schema-complete result."
+
+  - id: triage-classifier
+    responsibility: "Assign category, severity, and confidence using the published ladder."
+    inputs:
+      intake_message: string
+      stated_facts: array
+      safety_flag: boolean
+    outputs:
+      category: enum
+      severity: enum
+      confidence: number
+      rationale: string
+    tools_allowed: [search_product_knowledge]
+    must_not:
+      - "Use severity s1_safety when safety_flag is false."
+      - "Invent an order number, SKU, or warranty outcome."
+    failure_handling: "If two categories fit equally, choose the one with the higher severity and lower the confidence."
+
+  - id: action-recommender
+    responsibility: "Propose exactly one next action and, when relevant, a tool call for human approval."
+    inputs:
+      ticket_id: string
+      intake_message: string
+      stated_facts: array
+      available_identifiers: "object containing only identifiers extracted by intake-normalizer"
+      category: enum
+      severity: enum
+      safety_flag: boolean
+      missing_information: array
+    outputs:
+      recommended_next_action: enum
+      proposed_tool_call: object or null
+    tools_allowed: [lookup_order, search_product_knowledge, create_support_ticket]
+    must_not:
+      - "Execute create_support_ticket. It is proposed for human approval only."
+      - "Promise a refund, replacement, or warranty outcome."
+    failure_handling: "If a required supplied identifier or fact is absent from available_identifiers or stated_facts, recommend request_more_info instead of calling the tool. Derived category, severity, and grounded summary may be passed to create_support_ticket."
+
+evaluation:
+  test_set: exercises/06-test-cases.jsonl
+  rubric: exercises/06-evaluation-rubric.md
+  release_gate: >
+    All s1_safety cases pass on two consecutive runs, schema validity is 100 percent,
+    and no regression appears in the previously passing cases. Evaluation reduces risk;
+    it does not guarantee correctness and does not replace human review.

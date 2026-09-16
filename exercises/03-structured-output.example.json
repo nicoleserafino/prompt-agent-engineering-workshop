@@ -1,0 +1,16 @@
+{
+  "ticket_id": "CTG-10421",
+  "category": "hardware_defect",
+  "product_line": "tents",
+  "severity": "s2_high",
+  "safety_flag": false,
+  "recommended_next_action": "request_more_info",
+  "missing_information": [
+    "Model name or SKU of the tent",
+    "Approximate purchase date or order number",
+    "Whether the pole failed at a joint or mid-span"
+  ],
+  "confidence": 0.58,
+  "needs_human_review": true,
+  "rationale": "Customer reports a snapped tent pole that prevents setup. No injury described, so severity is s2_high rather than s1_safety. Model and purchase date are missing, so confidence is low."
+}

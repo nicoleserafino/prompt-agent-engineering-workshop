@@ -1,0 +1,176 @@
+{
+  "contract_version": "1.0.0",
+  "scenario": "Contoso Trail Gear (fictional) public product-support intake and triage",
+  "important": "These tools are SIMULATED for the workshop. Nothing here calls a real system. A model that emits a function-call proposal has NOT executed anything; an application still has to decide whether to run it.",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "lookup_order",
+        "description": "Look up a Contoso Trail Gear order by order number. Read-only. Returns synthetic workshop data.",
+        "parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["order_number"],
+          "properties": {
+            "order_number": {
+              "type": "string",
+              "pattern": "^CTG-ORD-[0-9]{6}$",
+              "description": "Order number exactly as the customer wrote it."
+            }
+          }
+        }
+      },
+      "side_effects": "none",
+      "human_approval_required": false,
+      "failure_modes": [
+        "order_not_found",
+        "timeout",
+        "malformed_order_number"
+      ],
+      "simulated_responses": {
+        "CTG-ORD-884120": {
+          "order_number": "CTG-ORD-884120",
+          "purchase_date": "2026-05-02",
+          "items": [
+            {
+              "sku": "TNT-SUMMIT2",
+              "name": "Summit 2 Tent",
+              "product_line": "tents"
+            }
+          ],
+          "warranty_window_days_remaining": 682
+        },
+        "order_not_found": {
+          "error": "order_not_found",
+          "message": "No matching order in the synthetic workshop dataset."
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "search_product_knowledge",
+        "description": "Search the public Contoso Trail Gear product knowledge base for care, setup, and troubleshooting articles. Read-only.",
+        "parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["query"],
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 200,
+              "description": "Search phrase derived from the customer's own words."
+            },
+            "product_line": {
+              "type": "string",
+              "enum": [
+                "tents",
+                "sleeping_bags",
+                "backpacks",
+                "camp_stoves",
+                "apparel",
+                "accessories"
+              ]
+            },
+            "max_results": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5,
+              "default": 3
+            }
+          }
+        }
+      },
+      "side_effects": "none",
+      "human_approval_required": false,
+      "failure_modes": ["no_results", "timeout"],
+      "simulated_responses": {
+        "tent pole replacement": [
+          {
+            "article_id": "KB-TNT-014",
+            "title": "Replacing a Summit series tent pole section",
+            "summary": "Pole sections are user replaceable. Order a replacement section and use the repair sleeve in the stuff sack."
+          },
+          {
+            "article_id": "KB-TNT-022",
+            "title": "What the Summit tent limited warranty covers",
+            "summary": "Manufacturing defects are covered. Damage from wind above rated load is not."
+          }
+        ],
+        "no_results": []
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "create_support_ticket",
+        "description": "Create a support ticket in the (simulated) Contoso Trail Gear support queue. WRITE ACTION. Must be proposed for human approval, never auto-executed in this workshop.",
+        "parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ticket_id", "category", "severity", "summary"],
+          "properties": {
+            "ticket_id": {
+              "type": "string",
+              "pattern": "^CTG-[0-9]{5}$"
+            },
+            "category": {
+              "type": "string",
+              "enum": [
+                "hardware_defect",
+                "sizing_fit",
+                "order_and_shipping",
+                "warranty_claim",
+                "usage_guidance",
+                "safety_concern",
+                "other"
+              ]
+            },
+            "severity": {
+              "type": "string",
+              "enum": ["s1_safety", "s2_high", "s3_normal", "s4_low"]
+            },
+            "summary": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 400,
+              "description": "Neutral summary using only facts present in the intake message."
+            },
+            "assign_to_queue": {
+              "type": "string",
+              "enum": ["general_support", "warranty", "safety_review", "order_support"],
+              "default": "general_support"
+            }
+          }
+        }
+      },
+      "side_effects": "creates a record",
+      "human_approval_required": true,
+      "failure_modes": [
+        "duplicate_ticket",
+        "validation_error",
+        "queue_unavailable"
+      ],
+      "simulated_responses": {
+        "approved": {
+          "status": "created",
+          "ticket_id": "CTG-10421",
+          "queue": "warranty",
+          "created_at": "2026-09-16T13:05:00Z"
+        },
+        "validation_error": {
+          "error": "validation_error",
+          "message": "severity s1_safety requires assign_to_queue safety_review"
+        }
+      }
+    }
+  ],
+  "policy": {
+    "no_customer_data": "Workshop inputs are synthetic. Do not paste real customer messages, order numbers, or company-confidential content.",
+    "write_actions": "Any tool with side_effects other than 'none' requires explicit human approval before execution.",
+    "unknown_arguments": "If a required argument is missing from the intake message, the agent must ask for it instead of inventing a value.",
+    "failure_handling": "On any failure_mode, the agent reports the failure and recommends a human next step. It does not retry a write action automatically."
+  }
+}

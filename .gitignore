@@ -1,0 +1,21 @@
+# Local participant scratch work (never commit real or personal data)
+scratch/
+my-notes/
+*.local.md
+
+# Editor and OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python artifacts from running validate.py
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Spreadsheet exports from evaluation runs
+*.xlsx
+~$*

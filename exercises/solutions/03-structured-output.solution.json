@@ -1,0 +1,56 @@
+{
+  "note": "Reference outputs for Exercise 3. Values such as confidence and rationale wording will vary between runs and between models; the shape and the enum values must not.",
+  "CTG-10421": {
+    "ticket_id": "CTG-10421",
+    "category": "hardware_defect",
+    "product_line": "tents",
+    "severity": "s2_high",
+    "safety_flag": false,
+    "recommended_next_action": "request_more_info",
+    "missing_information": [
+      "Tent model name or SKU",
+      "Order number or approximate purchase date",
+      "Whether the pole failed at a joint or mid-span"
+    ],
+    "confidence": 0.58,
+    "needs_human_review": true,
+    "rationale": "A snapped pole prevents setup, so the tent cannot be used, but nobody is described as at risk. Model and purchase details are missing."
+  },
+  "CTG-10422": {
+    "ticket_id": "CTG-10422",
+    "category": "safety_concern",
+    "product_line": "camp_stoves",
+    "severity": "s1_safety",
+    "safety_flag": true,
+    "recommended_next_action": "route_to_safety_review",
+    "missing_information": [
+      "Stove model or SKU",
+      "Fuel canister type and whether it is still attached"
+    ],
+    "confidence": 0.91,
+    "needs_human_review": true,
+    "rationale": "Customer reports a flare-up, a burn injury, and a valve that hisses when closed. Injury plus a possible fuel leak requires safety review before any reply."
+  },
+  "CTG-10425": {
+    "ticket_id": "CTG-10425",
+    "category": "other",
+    "product_line": "unknown",
+    "severity": "s4_low",
+    "safety_flag": false,
+    "recommended_next_action": "request_more_info",
+    "missing_information": [
+      "What the customer needs help with",
+      "Which product is involved"
+    ],
+    "confidence": 0.2,
+    "needs_human_review": true,
+    "rationale": "The message contains no support request. Ask what the customer needs rather than assigning a category."
+  },
+  "common_compliance_failures": [
+    "Wrapping the JSON in a markdown code fence or adding a closing sentence",
+    "Returning confidence as \"58%\" or \"high\" instead of a number",
+    "Inventing an extra field such as suggested_reply",
+    "Using severity values like \"high\" or \"P1\" that are not in the enum",
+    "Setting safety_flag true while leaving severity at s3_normal"
+  ]
+}

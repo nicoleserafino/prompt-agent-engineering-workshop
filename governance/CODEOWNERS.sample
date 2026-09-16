@@ -1,0 +1,39 @@
+# CODEOWNERS — workshop sample
+#
+# Replace every @your-org/* placeholder with real GitHub teams in your own organization
+# before you reuse this file. Placeholder teams do not exist, so GitHub cannot request
+# reviews from them. This sample is not a dependable merge gate until real owners and
+# repository rules are configured.
+# Multiple owners on one pattern route to all listed owners, but a code-owner requirement can
+# be satisfied by any one of them. Enforce distinct role approvals separately when required.
+# See governance/ownership-raci.md for who these roles map to.
+#
+# Syntax: <path pattern> <owner> [<owner> ...]
+# Later matching lines win, so order from general to specific.
+
+# Default owner for anything not matched below.
+*                                   @your-org/prompt-owners
+
+# Workshop delivery content.
+/README.md                          @your-org/workshop-maintainers
+/facilitator-guide.md               @your-org/workshop-maintainers
+/participant-workbook.md            @your-org/workshop-maintainers
+/train-the-trainer.md               @your-org/workshop-maintainers
+/slides/                            @your-org/workshop-maintainers
+
+# The shared prompt and agent library: the highest-risk content in the repository.
+/library/prompts/                   @your-org/prompt-owners
+/library/agents/                    @your-org/agent-owners
+/library/CHANGELOG.md               @your-org/prompt-owners @your-org/governance-owners
+
+# Contracts that other artifacts depend on. Changes here are breaking changes.
+/exercises/03-structured-output.schema.json   @your-org/agent-owners @your-org/governance-owners
+/exercises/04-tool-contract.json              @your-org/agent-owners
+/exercises/06-test-cases.jsonl                @your-org/prompt-owners @your-org/quality-owners
+
+# Governance rules require governance approval, by definition.
+/governance/                        @your-org/governance-owners
+/.github/                           @your-org/governance-owners
+
+# Optional paths that depend on product access some people do not have.
+/optional/                          @your-org/workshop-maintainers

@@ -1,0 +1,57 @@
+# Agent definition for the shared library. Fictional Contoso Trail Gear scenario.
+# This file is the reviewable source of truth for the triage agent's configuration.
+# It is intentionally portable: it describes intent, not a vendor-specific deployment.
+
+id: contoso-trail-gear-triage-agent
+version: 1.2.0
+status: released
+owner_team: "@your-org/prompt-owners"          # replace with a real team before reuse
+reviewers_required: 1
+scenario: Public product-support intake and triage (synthetic data only)
+
+model:
+  selection_rationale: >
+    Use a general chat model that supports structured output. Model choice is a governed
+    decision: record it here, re-run the evaluation set when it changes, and never change
+    it silently inside a prompt edit.
+  configured_model: "<record the model you actually used, for example the default model in Microsoft Copilot chat>"
+  temperature_guidance: "Lowest available setting for classification work; higher settings increase run-to-run variability."
+
+prompt:
+  system_prompt_file: ../prompts/triage-intake.prompt.md
+  output_schema_file: ../../exercises/03-structured-output.schema.json
+
+tools:
+  contract_file: ../../exercises/04-tool-contract.json
+  allowed:
+    - lookup_order
+    - search_product_knowledge
+  proposed_for_human_approval_only:
+    - create_support_ticket
+
+subagents:
+  contract_file: ../../exercises/solutions/05-triage-subagent-contracts.yaml
+  enabled:
+    - intake-normalizer
+    - safety-escalation-checker
+    - triage-classifier
+    - action-recommender
+
+guardrails:
+  - "Never request or store customer personal, payment, or health data."
+  - "Never promise a refund, replacement, or warranty outcome."
+  - "Any s1_safety result routes to a human safety reviewer before any customer reply."
+  - "A function-call proposal is not proof that an action ran."
+
+evaluation:
+  test_set: ../../exercises/06-test-cases.jsonl
+  rubric: ../../exercises/06-evaluation-rubric.md
+  gate: "100 percent schema validity; all safety cases pass twice; no regressions."
+
+monitoring:
+  signals:
+    - "Rate of needs_human_review true"
+    - "Safety misses reported by reviewers"
+    - "Schema validation failures"
+    - "Reviewer overrides of recommended_next_action"
+  rollback: ../../governance/versioning-release-rollback.md

@@ -1,0 +1,29 @@
+# CODEOWNERS
+#
+# WORKSHOP PLACEHOLDER FILE. The @your-org/* teams below do not exist.
+# GitHub cannot request reviews from a team that does not exist, so this file is not a
+# dependable merge gate until you replace the placeholders and configure repository rules.
+# Multiple owners on one pattern do not mean that every listed owner must approve.
+#
+# How to adopt it: see governance/CODEOWNERS.sample for the annotated version and
+# governance/ownership-raci.md for what each role is accountable for.
+
+*                                   @your-org/prompt-owners
+
+/README.md                          @your-org/workshop-maintainers
+/facilitator-guide.md               @your-org/workshop-maintainers
+/participant-workbook.md            @your-org/workshop-maintainers
+/train-the-trainer.md               @your-org/workshop-maintainers
+/slides/                            @your-org/workshop-maintainers
+
+/library/prompts/                   @your-org/prompt-owners
+/library/agents/                    @your-org/agent-owners
+/library/CHANGELOG.md               @your-org/prompt-owners @your-org/governance-owners
+
+/exercises/03-structured-output.schema.json   @your-org/agent-owners @your-org/governance-owners
+/exercises/04-tool-contract.json              @your-org/agent-owners
+/exercises/06-test-cases.jsonl                @your-org/prompt-owners @your-org/quality-owners
+
+/governance/                        @your-org/governance-owners
+/.github/                           @your-org/governance-owners
+/optional/                          @your-org/workshop-maintainers

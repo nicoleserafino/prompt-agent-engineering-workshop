@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/contoso-trail-gear/triage-result.schema.json",
+  "title": "Contoso Trail Gear support triage result",
+  "description": "Structured output contract for the fictional Contoso Trail Gear public product-support intake and triage workflow. Synthetic data only; never place real customer or company-confidential data in a workshop artifact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ticket_id",
+    "category",
+    "product_line",
+    "severity",
+    "safety_flag",
+    "recommended_next_action",
+    "missing_information",
+    "confidence",
+    "needs_human_review",
+    "rationale"
+  ],
+  "properties": {
+    "ticket_id": {
+      "type": "string",
+      "description": "Identifier supplied with the intake message. Echo it back unchanged.",
+      "pattern": "^CTG-[0-9]{5}$"
+    },
+    "category": {
+      "type": "string",
+      "description": "Primary reason the customer contacted support.",
+      "enum": [
+        "hardware_defect",
+        "sizing_fit",
+        "order_and_shipping",
+        "warranty_claim",
+        "usage_guidance",
+        "safety_concern",
+        "other"
+      ]
+    },
+    "product_line": {
+      "type": "string",
+      "description": "Product family named or clearly implied in the message. Use unknown when the message does not say.",
+      "enum": [
+        "tents",
+        "sleeping_bags",
+        "backpacks",
+        "camp_stoves",
+        "apparel",
+        "accessories",
+        "unknown"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "description": "s1_safety is reserved for possible injury or fire risk. s2_high blocks the customer from using the product. s3_normal is a routine issue. s4_low is informational.",
+      "enum": ["s1_safety", "s2_high", "s3_normal", "s4_low"]
+    },
+    "safety_flag": {
+      "type": "boolean",
+      "description": "True when the message describes injury, burn, fire, fumes, structural failure under load, or a similar risk to a person."
+    },
+    "recommended_next_action": {
+      "type": "string",
+      "description": "Single next step a support agent should take. The model proposes; a human decides.",
+      "enum": [
+        "request_more_info",
+        "route_to_warranty",
+        "route_to_safety_review",
+        "send_self_service_guide",
+        "route_to_order_support"
+      ]
+    },
+    "missing_information": {
+      "type": "array",
+      "description": "Specific facts that are absent and would change the triage decision. Empty array when nothing material is missing.",
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 120
+      },
+      "maxItems": 5
+    },
+    "confidence": {
+      "type": "number",
+      "description": "Self-reported confidence in the classification. Treat it as a rough signal, never as a guarantee.",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "needs_human_review": {
+      "type": "boolean",
+      "description": "True when safety_flag is true, confidence is below 0.6, or required information is missing."
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Short justification grounded only in the intake message. No speculation about the customer.",
+      "minLength": 10,
+      "maxLength": 280
+    }
+  }
+}

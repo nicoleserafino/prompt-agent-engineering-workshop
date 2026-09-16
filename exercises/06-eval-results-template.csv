@@ -1,0 +1,9 @@
+case_id,run_id,model_or_chat_used,valid_json,category_match,severity_match,safety_flag_match,recommended_action_correct,missing_info_useful,human_review_correct,verdict,notes
+TC-02,run-1,,,,,,,,,,
+TC-02,run-2,,,,,,,,,,
+TC-07,run-1,,,,,,,,,,
+TC-07,run-2,,,,,,,,,,
+TC-05,run-1,,,,,,,,,,
+TC-05,run-2,,,,,,,,,,
+TC-08,run-1,,,,,,,,,,
+TC-08,run-2,,,,,,,,,,
